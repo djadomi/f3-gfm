@@ -35,7 +35,7 @@ $f3->set('content', $gfm->convert($markdown));
 
 ```php
 \Template::instance()->filter('gfm', function($text) {
-    return \GFM\GFM::instance()->convert($text);
+	return \Djadomi\F3Gfm::instance()->convert($text);
 });
 ```
 
