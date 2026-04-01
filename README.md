@@ -12,7 +12,7 @@ A modern markdown plugin for F3 that supports GitHub-Flavoured Markdown features
 ## Installation
 
 ```bash
-composer require djadomi/gfm
+composer require djadomi/f3-gfm
 ```
 
 ## Usage
