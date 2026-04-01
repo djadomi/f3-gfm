@@ -20,9 +20,7 @@ composer require djadomi/f3-gfm
 ### Basic Usage
 
 ```php
-use GFM\GFM;
-
-$gfm = GFM::instance();
+$gfm = new \Djadomi\F3Gfm;
 $html = $gfm->convert('# Hello World');
 echo $html;
 ```
