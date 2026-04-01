@@ -1,14 +1,13 @@
 <?php
 
-namespace GFM;
+namespace Djadomi;
 
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\Extension\GithubFlavoredMarkdownExtension;
 use League\CommonMark\MarkdownConverter;
-use Prefab;
 
-class GFM extends Prefab {
+class F3Gfm extends \Prefab {
 	protected $converter;
 
 	public function __construct() {
