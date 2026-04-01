@@ -11,7 +11,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Djadomi\\F3Gfm\\": "src/"
+            "Djadomi\\": "src/"
         }
     },
     "require-dev": {
