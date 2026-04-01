@@ -1,4 +1,4 @@
-# GFM - GitHub-Flavoured Markdown Plugin for Fat-Free Framework
+# F3-GFM - GitHub-Flavoured Markdown Plugin for Fat-Free Framework
 
 A modern markdown plugin for F3 that supports GitHub-Flavoured Markdown features using the league/commonmark library.
 
