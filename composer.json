@@ -1,6 +1,9 @@
 {
     "name": "djadomi/f3-gfm",
     "description": "GitHub-Flavoured Markdown plugin for Fat-Free Framework",
+	"homepage": "https://github.com/djadomi/f3-gfm",
+	"keywords": ["fat-free", "markdown", "github-flavoured"],
+	"license": "MIT",
     "type": "library",
     "require": {
         "bcosca/fatfree-core": "^3.9",
