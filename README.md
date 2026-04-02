@@ -88,7 +88,7 @@ Visit https://example.com
 
 ### Alerts
 
-> [!NOTE]
+> [!WARNING]
 > Work in progress
 
 ```markdown
