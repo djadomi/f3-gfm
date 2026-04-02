@@ -8,6 +8,7 @@ A modern markdown plugin for F3 that supports GitHub-Flavoured Markdown features
 - **Task Lists** - Interactive checkboxes
 - **Autolinks** - Automatic URL linking
 - **Strikethrough** - `~~text~~` syntax
+- **Alerts** - GitHub-style admonitions (`[!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]`, `[!CAUTION]`)
 
 ## Installation
 
@@ -83,6 +84,23 @@ $f3->set('GFM_TABLE_WRAP', false); // Wrap tables in div.gfm-table (default: fal
 
 ```markdown
 Visit https://example.com
+```
+
+### Alerts
+
+```markdown
+> [!NOTE]
+> This is a note.
+
+> [!WARNING]
+> This is a warning.
+```
+
+Output:
+```html
+<blockquote class="gfm-alert gfm-alert-note" data-alert-type="note">
+<p>This is a note.</p>
+</blockquote>
 ```
 
 ## License

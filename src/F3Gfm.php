@@ -34,6 +34,7 @@ class F3Gfm extends \Prefab {
         $environment = new Environment($config);
         $environment->addExtension(new CommonMarkCoreExtension());
         $environment->addExtension(new GithubFlavoredMarkdownExtension());
+        $environment->addExtension(new AlertExtension());
         $this->converter = new MarkdownConverter($environment);
     }
 
