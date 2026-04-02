@@ -88,8 +88,8 @@ Visit https://example.com
 
 ### Alerts
 
-[!NOTE]
-Work in progress
+> [!NOTE]
+> Work in progress
 
 ```markdown
 > [!NOTE]
