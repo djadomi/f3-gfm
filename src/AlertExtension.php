@@ -23,11 +23,11 @@ class AlertExtension implements ExtensionInterface
         $document = $event->getDocument();
         $walker = $document->walker();
 
-        while ($node = $walker->current()) {
-            if ($node instanceof BlockQuote) {
+        while ($walkerEvent = $walker->next()) {
+            $node = $walkerEvent->getNode();
+            if ($walkerEvent->isEntering() && $node instanceof BlockQuote) {
                 $this->checkForAlert($node);
             }
-            $walker->next();
         }
     }
 
