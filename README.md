@@ -8,7 +8,7 @@ A modern markdown plugin for F3 that supports GitHub-Flavoured Markdown features
 - **Task Lists** - Interactive checkboxes
 - **Autolinks** - Automatic URL linking
 - **Strikethrough** - `~~text~~` syntax
-- **Alerts** - GitHub-style admonitions (`[!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]`, `[!CAUTION]`)
+- **Alerts** - GitHub-style admonitions (`[!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]`, `[!CAUTION]`) — work in progress
 
 ## Installation
 
