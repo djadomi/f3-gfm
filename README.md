@@ -56,6 +56,10 @@ $f3->set('GFM_MAX_NESTING', 100); // Max nesting level (default: 100)
 $f3->set('GFM_TABLE_WRAP', false); // Wrap tables in div.gfm-table (default: false)
 ```
 
+## Styling
+
+You may want to include something like https://github.com/sindresorhus/github-markdown-css to get GitHub-like styling for your rendered markdown. Adding `/markdown-body` class to your container might require you to undo some of this CSS if you want to keep your site's own styling, especially variables like `--bgColor-default` and `--fgColor-default`.
+
 ## Examples
 
 ### Tables
