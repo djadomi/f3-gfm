@@ -58,7 +58,7 @@ $f3->set('GFM_TABLE_WRAP', false); // Wrap tables in div.gfm-table (default: fal
 
 ## Styling
 
-You may want to include something like https://github.com/sindresorhus/github-markdown-css to get GitHub-like styling for your rendered markdown. Adding `/markdown-body` class to your container might require you to undo some of this CSS if you want to keep your site's own styling, especially variables like `--bgColor-default` and `--fgColor-default`.
+You may want to include something like https://github.com/sindresorhus/github-markdown-css to get GitHub-like styling for your rendered markdown. Adding the `markdown-body` class to your container to apply these might require you to undo some of this CSS if you want to keep your site's own styling, especially variables like `--bgColor-default` and `--fgColor-default`.
 
 ## Examples
 
