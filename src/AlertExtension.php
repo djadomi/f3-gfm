@@ -84,14 +84,8 @@ class AlertExtension implements ExtensionInterface
 
     private function updateParagraphText(Paragraph $paragraph, string $newText): void
     {
-        foreach ($paragraph->children() as $child) {
-            if ($child instanceof StringContainerInterface || $child instanceof Text) {
-                $child->setLiteral($newText);
-                return;
-            }
-        }
-        
-        if ($paragraph->firstChild() === null) {
+        $paragraph->detachChildren();
+        if ($newText !== '') {
             $paragraph->appendChild(new Text($newText));
         }
     }
