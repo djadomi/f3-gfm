@@ -49,9 +49,10 @@ Then in templates:
 Set these in your F3 hive before using:
 
 ```php
-$f3->set('GFM_HTML_INPUT', 'escape');   // 'strip' or 'allow' (default: 'escape')
-$f3->set('GFM_UNSAFE_LINKS', false);    // Allow javascript: links (default: false)
-$f3->set('GFM_MAX_NESTING', 100);       // Max nesting level (default: 100)
+$f3->set('GFM_HTML_INPUT', 'escape'); // 'strip' or 'allow' (default: 'escape')
+$f3->set('GFM_UNSAFE_LINKS', false); // Allow javascript: links (default: false)
+$f3->set('GFM_MAX_NESTING', 100); // Max nesting level (default: 100)
+$f3->set('GFM_TABLE_WRAP', false); // Wrap tables in div.gfm-table (default: false)
 ```
 
 ## Examples
