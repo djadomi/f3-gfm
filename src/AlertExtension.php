@@ -11,82 +11,82 @@ use League\CommonMark\Node\StringContainerInterface;
 
 class AlertExtension implements ExtensionInterface
 {
-    private const TYPES = ['note', 'tip', 'important', 'warning', 'caution'];
+	private const TYPES = ['note', 'tip', 'important', 'warning', 'caution'];
 
-    public function register(\League\CommonMark\Environment\EnvironmentBuilderInterface $environment): void
-    {
-        $environment->addEventListener(DocumentParsedEvent::class, [$this, 'processDocument']);
-    }
+	public function register(\League\CommonMark\Environment\EnvironmentBuilderInterface $environment): void
+	{
+		$environment->addEventListener(DocumentParsedEvent::class, [$this, 'processDocument']);
+	}
 
-    public function processDocument(DocumentParsedEvent $event): void
-    {
-        $document = $event->getDocument();
-        $walker = $document->walker();
+	public function processDocument(DocumentParsedEvent $event): void
+	{
+		$document = $event->getDocument();
+		$walker = $document->walker();
 
-        while ($walkerEvent = $walker->next()) {
-            $node = $walkerEvent->getNode();
-            if ($walkerEvent->isEntering() && $node instanceof BlockQuote) {
-                $this->checkForAlert($node);
-            }
-        }
-    }
+		while ($walkerEvent = $walker->next()) {
+			$node = $walkerEvent->getNode();
+			if ($walkerEvent->isEntering() && $node instanceof BlockQuote) {
+				$this->checkForAlert($node);
+			}
+		}
+	}
 
-    private function checkForAlert(BlockQuote $blockQuote): void
-    {
-        $firstParagraph = null;
-        foreach ($blockQuote->children() as $child) {
-            if ($child instanceof Paragraph) {
-                $firstParagraph = $child;
-                break;
-            }
-        }
+	private function checkForAlert(BlockQuote $blockQuote): void
+	{
+		$firstParagraph = null;
+		foreach ($blockQuote->children() as $child) {
+			if ($child instanceof Paragraph) {
+				$firstParagraph = $child;
+				break;
+			}
+		}
 
-        if ($firstParagraph === null) {
-            return;
-        }
+		if ($firstParagraph === null) {
+			return;
+		}
 
-        $text = $this->getTextContent($firstParagraph);
-        
-        foreach (self::TYPES as $type) {
-            $pattern = '/^\[!' . strtoupper($type) . '\]/i';
-            if (preg_match($pattern, $text)) {
-                $this->convertToAlert($blockQuote, $firstParagraph, $type, $pattern);
-                break;
-            }
-        }
-    }
+		$text = $this->getTextContent($firstParagraph);
 
-    private function getTextContent(Paragraph $paragraph): string
-    {
-        $text = '';
-        foreach ($paragraph->children() as $child) {
-            if ($child instanceof StringContainerInterface) {
-                $text .= $child->getLiteral();
-            } elseif ($child instanceof Text) {
-                $text .= $child->getLiteral();
-            }
-        }
-        return $text;
-    }
+		foreach (self::TYPES as $type) {
+			$pattern = '/^\[!' . strtoupper($type) . '\]/i';
+			if (preg_match($pattern, $text)) {
+				$this->convertToAlert($blockQuote, $firstParagraph, $type, $pattern);
+				break;
+			}
+		}
+	}
 
-    private function convertToAlert(BlockQuote $blockQuote, Paragraph $paragraph, string $type, string $pattern): void
-    {
-        $blockQuote->data->set('attributes', [
-            'class' => 'gfm-alert gfm-alert-' . $type,
-            'data-alert-type' => $type,
-        ]);
+	private function getTextContent(Paragraph $paragraph): string
+	{
+		$text = '';
+		foreach ($paragraph->children() as $child) {
+			if ($child instanceof StringContainerInterface) {
+				$text .= $child->getLiteral();
+			} elseif ($child instanceof Text) {
+				$text .= $child->getLiteral();
+			}
+		}
+		return $text;
+	}
 
-        $text = $this->getTextContent($paragraph);
-        $newText = preg_replace($pattern, '', $text, 1);
-        
-        $this->updateParagraphText($paragraph, trim($newText));
-    }
+	private function convertToAlert(BlockQuote $blockQuote, Paragraph $paragraph, string $type, string $pattern): void
+	{
+		$blockQuote->data->set('attributes', [
+			'class' => 'gfm-alert gfm-alert-' . $type,
+			'data-alert-type' => $type,
+		]);
 
-    private function updateParagraphText(Paragraph $paragraph, string $newText): void
-    {
-        $paragraph->detachChildren();
-        if ($newText !== '') {
-            $paragraph->appendChild(new Text($newText));
-        }
-    }
+		$text = $this->getTextContent($paragraph);
+		$newText = preg_replace($pattern, '', $text, 1);
+
+		$this->updateParagraphText($paragraph, trim($newText));
+	}
+
+	private function updateParagraphText(Paragraph $paragraph, string $newText): void
+	{
+		$paragraph->detachChildren();
+		if ($newText !== '') {
+			$paragraph->appendChild(new Text($newText));
+		}
+	}
 }
